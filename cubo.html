@@ -1,0 +1,106 @@
+<html>
+  <head></head>
+  <style>
+	body{overflow: hidden}
+	.container{width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; flex-wrap: wrap}
+	.botoes{width: 100vw; display: flex; justify-content: center; align-items: center; position: relative; top: -300px}
+	.cube-area{position: absolute; height: 480px; width: 320px; perspective: 600}
+	.cube{position: absolute; top: 140px; left: 60px; height: 200px; width: 200px; transform-style: preserve-3d}
+	#yrotation{margin:0 10px}
+	.face{position: absolute; height: inherit; width: inherit;opacity:.5}
+	.face.front{background-color: red; transform: translateZ(100px)}
+	.face.right{background-color: green; transform: translateX(100px) rotateY(-90deg)}
+	.face.left{background-color: blue; transform: translateX(-100px) rotateY(-90deg)}
+	.face.back{background-color: orange; transform: translateZ(-100px) rotateY(180deg)}
+	
+	.cube.xrotation{animation: xrotation 3s ease 0s 1}
+	@keyframes xrotation{
+		from{
+			transform: rotateX(0deg)
+		}
+		to{
+			transform: rotateX(360deg)
+		}
+	
+	}
+	
+	.cube.yrotation{animation: yrotation 3s ease 0s 1}
+	@keyframes yrotation{
+		from{
+			transform: rotateY(0deg)
+		}
+		to{
+			transform: rotateY(360deg)
+		}
+	
+	}
+
+	.cube.rotation{animation: rotation 3s ease 0s 1}
+	@keyframes rotation{
+		from{
+			transform: rotateY(0deg) rotateX(0deg)
+		}
+		to{
+			transform: rotateY(360deg) rotateX(360deg)
+		}
+	
+	}	
+  
+  </style>
+  <body>
+    
+	<div class="container">
+		
+		<div class="botoes">
+			<button id="xrotation">RodarX 360º</button>
+			<button id="yrotation">RodarY 360º</button>
+			<button id="rotation">Rodar</button>
+		</div>
+		
+		<div class="cube-area">
+    
+		  <div class="cube">
+
+			<div class="face front"></div>
+			<div class="face back"></div>
+			<div class="face left"></div>
+			<div class="face right"></div>
+
+		  </div>
+		
+		</div>
+	
+	</div>
+	
+  </body>
+  <script>
+  
+	var cubo = document.querySelector('.cube')
+	var rodarX360 = document.getElementById('xrotation')
+	var rodarY360 = document.getElementById('yrotation')
+	var rodar = document.getElementById('rotation')
+	
+	
+	rodarX360.onclick = function(){
+		cubo.classList.add('xrotation')
+		setTimeout(function(){
+			cubo.classList.remove('xrotation')
+		}, 3000)
+	}
+	
+	rodarY360.onclick = function(){
+		cubo.classList.add('yrotation')
+		setTimeout(function(){
+			cubo.classList.remove('yrotation')
+		}, 3000)
+	}
+	
+	rodar.onclick = function(){
+		cubo.classList.add('rotation')
+		setTimeout(function(){
+			cubo.classList.remove('rotation')
+		}, 3000)
+	}
+  
+  </script>
+</html>
